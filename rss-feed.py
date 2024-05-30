@@ -52,9 +52,9 @@ with open('rss-feed.yml', 'r') as file:
         xml_tree.SubElement(item_element, 'link').text = link_prefix
 
         enclosure = xml_tree.SubElement(item_element, 'enclosure', {
-          'url': item['url'],
+          'url': str(item['url']),
           'type': 'audio/mpeg',
-          'length': item['length']
+          'length': str(item['length'])
         })
   
 
