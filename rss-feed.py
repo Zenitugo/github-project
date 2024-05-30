@@ -2,7 +2,7 @@ import yaml
 import xml.etree.ElementTree as xml_tree
 
 
-with open('rss-feed.yaml', 'r') as file:
+with open('rss-feed.yml', 'r') as file:
     yaml_data = yaml.safe_load(file)
 
     rss_element = xml_tree.Element('rss', {
