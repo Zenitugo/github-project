@@ -1,6 +1,13 @@
 import yaml
 import xml.etree.ElementTree as xml_tree
 
+# Function to debug the tree structure
+def debug_tree(element, depth=0):
+    indent = "  " * depth
+    print(f"{indent}Element: {element.tag}, Text type: {type(element.text)}, Text: {element.text}")
+    for child in element:
+        debug_tree(child, depth + 1)
+
 
 with open('rss-feed.yml', 'r') as file:
     yaml_data = yaml.safe_load(file)
@@ -51,6 +58,12 @@ with open('rss-feed.yml', 'r') as file:
         })
   
 
+    
+    # Debug the tree structure before writing
+    debug_tree(rss_element)
+
+
+     # Write to file 
     output_tree = xml_tree.ElementTree(rss_element)
     output_tree.write('News.xml', encoding='UTF_8', xml_declaration=True)
     
